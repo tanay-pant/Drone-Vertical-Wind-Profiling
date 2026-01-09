@@ -10,10 +10,10 @@ def cleanup_flight_logs(raw_file):
     # Read the flight logs CSV
     df = pd.read_csv(f'RawFlightLogs/{raw_file}')
     
-    # Remove latitude and longitude columns and convert height from feet to meters
+    # Remove latitude and longitude columns (and unnecessary columns) and convert height from feet to meters
     df = df.drop(columns=['latitude', 'longitude'], errors='ignore')
     df['height_above_takeoff(meters)'] = (df['height_above_takeoff(feet)'] * 0.3048).round(2)
-    df = df.drop(columns=['height_above_takeoff(feet)'], errors='ignore')
+    df = df.drop(columns=['height_above_takeoff(feet)', 'height_above_ground_at_drone_location(feet)', 'ground_elevation_at_drone_location(feet)'], errors='ignore')
     
     # change datetime format from UTC to CST
     df['datetime(utc)'] = pd.to_datetime(df['datetime(utc)']).dt.tz_localize('UTC').dt.tz_convert('US/Central').dt.tz_localize(None)
