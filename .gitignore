@@ -2,5 +2,5 @@ venv/
 .env
 .DS_Store
 RawFlightLogs/
-
+.ipynb_checkpoints/
 
