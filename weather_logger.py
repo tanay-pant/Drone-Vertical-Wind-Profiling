@@ -58,8 +58,8 @@ def main():
         if weather_data:
             with open(OUTPUT_FILE, mode='a', newline='') as file:
                 # uncomment out the line 'pass' and comment out the writer lines to test without writing to file
-                #writer = csv.DictWriter(file, fieldnames=["timestamp", "wind_speed_mph", "wind_deg", "gust_mph", "humidity", "temp_f"])
-                #writer.writerow(weather_data)
+                # writer = csv.DictWriter(file, fieldnames=["timestamp", "wind_speed_mph", "wind_deg", "gust_mph", "humidity", "temp_f"])
+                # writer.writerow(weather_data)
                 pass
             print(f"[{weather_data['timestamp']}] Wind: {weather_data['wind_speed_mph']} mph | Gust: {weather_data['gust_mph']} mph | Dir: {weather_data['wind_deg']}° | Humidity: {weather_data['humidity']}% | Temp: {weather_data['temp_f']}°")
         # OpenWeatherMap updates an individual location's current weather data about every 10 minutes, so there's no point bombarding the csv with identical data
